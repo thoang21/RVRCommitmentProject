@@ -31,7 +31,7 @@ async function startProgram() {
 async function stageOne(){
 	
 	
-	let setpoint = 240;
+	let setpoint = 180;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
@@ -103,7 +103,7 @@ async function stageThree(){
 	
 	//Travel for eighty centimeters at a heading of 90 degrees
 	
-	let setpoint = 160;
+	let setpoint = 120;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
