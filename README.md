@@ -18,3 +18,5 @@ One catch is that each of you must contribute three stages yourself as commits t
 Another catch is that your stages should be submitted as issues on this repository, and as they are completed, closed by you (or me).
 
 I will be syncing with this repository on my computer and pasting the code into the Sphero RVR software for testing purposes.
+
+Visit the wiki for this project for more information on this task.
