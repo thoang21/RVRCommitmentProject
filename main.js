@@ -1,17 +1,17 @@
 /* The code below is set up to demonstrate three functions that run on the Sphero RVR. Each function runs a single stage.
 
 
-Stage one - drive forward two floor tiles (160 cm) using a PID algorithm at a heading of 90 degrees. 
+Stage one: drive forward three VEX field tiles (120 cm) using a PID algorithm at a heading of 90 degrees. 
 Note: This uses the y-coordinate of the robot as the setpoint.
 
 Stage two - make a 90 degree turn using Weinberg's hacky method that also happens to work really well.
 
-Stage three - drive forward one grid squares on the floor at a heading of 90 degrees. 
+Stage three - drive forward two tiles on the floor at a heading of 90 degrees. 
 Note: this stage uses the x-coordinate of the robot as the setpoint.
 
 Take a look at the code to get an idea of how each one works.
 
-Your task is to plan a fourteen stage path on the floor of the IDEA center using a series of commands like these. 
+Your task is to plan a fourteen stage path on the VEX field using a series of commands like these.
 
 One catch is that each of you must contribute three stages yourself as commits to this repository. 
 
@@ -31,7 +31,7 @@ async function startProgram() {
 async function stageOne(){
 	
 	
-	let setpoint = 160;
+	let setpoint = 240;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
@@ -103,7 +103,7 @@ async function stageThree(){
 	
 	//Travel for eighty centimeters at a heading of 90 degrees
 	
-	let setpoint = 80;
+	let setpoint = 160;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
