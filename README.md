@@ -3,15 +3,15 @@ This repository is for the advanced automation task titled 'Commitment Problems'
 
 The code in the main.js file is set up to demonstrate three functions that run on the Sphero RVR. Each function runs a single stage.
 
-- Stage one: drive forward two floor tiles (160 cm) using a PID algorithm at a heading of 90 degrees. Note: This uses the y-coordinate of the robot as the setpoint.
+- Stage one: drive forward two VEX field tiles (120 cm) using a PID algorithm at a heading of 90 degrees. Note: This uses the y-coordinate of the robot as the setpoint.
 
 - Stage two - make a 90 degree turn using Weinberg's hacky method that also happens to work really well.
 
-- Stage three - drive forward one grid squares on the floor at a heading of 90 degrees. Note: this stage uses the x-coordinate of the robot as the setpoint.
+- Stage three - drive forward one tile on the floor at a heading of 90 degrees. Note: this stage uses the x-coordinate of the robot as the setpoint.
 
 Take a look at the code to get an idea of how each one works.
 
-Your task is to plan a fourteen stage path on the floor of the IDEA center using a series of commands like these. 
+Your task is to plan a fourteen stage path on the VEX field using a series of commands like these. 
 
 One catch is that each of you must contribute three stages yourself as commits to this repository on a branch that you create yourself. You need to submit pull requests and deal with any conflicts in merging the code with the master branch. 
 
