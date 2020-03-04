@@ -31,7 +31,7 @@ async function startProgram() {
 async function stageOne(){
 
 
-	let setpoint = 180;
+	let setpoint = 240; //changed to four tiles
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
