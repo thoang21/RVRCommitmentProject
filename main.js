@@ -31,7 +31,7 @@ async function startProgram() {
 	await JadenStage2()
 	await JadenStage3()
 	await JadenStage4()
-	
+
 	//Other People's Movement Here:
 	exitProgram()
 }
@@ -39,7 +39,7 @@ async function startProgram() {
 async function JakeStage1(){
 
 
-	let setpoint = 180;
+	let setpoint = 240;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
@@ -111,7 +111,7 @@ async function JakeStage3(){
 
 	//Travel for eighty centimeters at a heading of 90 degrees
 
-	let setpoint = 120;
+	let setpoint = 300;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
@@ -168,9 +168,9 @@ async function JadenStage1(){
 //This is a hacky way to quickly do a point turn to 90 degrees.
 
 //This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
-await roll(90,50,0.1)
+await roll(180,50,0.1)
 //...and then this moves it back.
-await roll(90,-50,0.1)
+await roll(180,-50,0.1)
 }
 
 async function JadenStage2(){
@@ -248,7 +248,7 @@ async function JadenStage4(){
 
 	//Travel for eighty centimeters at a heading of 90 degrees
 
-	let setpoint = 300; //drive for 5 blocks
+	let setpoint = 180; //drive for 3 tiles
 
 	let k = 2.0;
 	let kD = 0.5;
@@ -305,4 +305,3 @@ async function JadenStage4(){
 	}
 
 }
-
