@@ -103,7 +103,7 @@ async function stageThree(){
 
 	//Travel for eighty centimeters at a heading of 90 degrees
 
-	let setpoint = 120;
+	let setpoint = 300; //drive for 5 blocks
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
