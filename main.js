@@ -47,7 +47,7 @@ async function JakeStage1(){
 	var oldError = 0;
 	var successTimer = 0.0;
 	var maxSpeed = 100;
-
+	var directionSign = 1; //-1 for moving left or down, 1 for moving right or up
 	var stageComplete = false;
 
 	//Visual feedback to know which stage we are on
@@ -58,7 +58,7 @@ async function JakeStage1(){
 		var location = getLocation().y;
 
 		//Use a PID algorithm to set the position of the robot
-		var error = setpoint - location;
+		var error = directionSign*(setpoint - location);
 		var changeError = error - oldError;
 		accumulatedError = error + accumulatedError
 
@@ -119,7 +119,7 @@ async function JakeStage3(){
 	var oldError = 0;
 	var successTimer = 0.0;
 	var maxSpeed = 100;
-
+	var directionSign = 1; //-1 for moving left or down, 1 for moving right or up
 	stageComplete = false;
 
 	await setMainLed({r:0,g:0,b:255})
@@ -129,7 +129,7 @@ async function JakeStage3(){
 		var location = getLocation().x;
 
 		//Use a PID algorithm to set the position of the robot
-		var error = setpoint - location;
+		var error = directionSign*(setpoint - location);
 		var changeError = error - oldError;
 		accumulatedError = error + accumulatedError
 
@@ -150,15 +150,19 @@ async function JakeStage3(){
 
 		await roll(90,output,0.2);
 
-		await delay(0.025);
-		//If our error is less than 2.0 cm, keep track of how long that has been the case.
 		if(error < 2.0){
-			successTimer += 0.025;
+			successTimer += 0.1;
+
 		}
+
 		//If the error has been less than 2.0 cm for more than half a second, finish the stage.
 		if(successTimer > 0.5){
 			stageComplete = true
 		}
+
+		await delay(0.025);
+		//If our error is less than 1.0 cm, keep track of how long that has been the case.
+
 	}
 
 }
@@ -176,7 +180,7 @@ await roll(180,-50,0.1)
 async function JadenStage2(){
 
 
-	let setpoint = 120;
+	let setpoint = 180;
 
 	let k = 2.0;
 	let kD = 0.5;
@@ -185,6 +189,7 @@ async function JadenStage2(){
 	var oldError = 0;
 	var successTimer = 0.0;
 	var maxSpeed = 100;
+	var directionSign = -1; //-1 for moving left or down, 1 for moving right or up
 
 	var stageComplete = false;
 
@@ -196,7 +201,7 @@ async function JadenStage2(){
 		var location = getLocation().y;
 
 		//Use a PID algorithm to set the position of the robot
-		var error = setpoint - location;
+		var error = directionSign*(setpoint - location);
 		var changeError = error - oldError;
 		accumulatedError = error + accumulatedError
 
@@ -215,7 +220,7 @@ async function JadenStage2(){
 		}
 
 		//This function rolls the motors at a heading of 0, with a motor speed of output, for 0.2 seconds.
-		await roll(0,output,0.2);
+		await roll(180,output,0.2);
 
 		if(error < 2.0){
 			successTimer += 0.1;
@@ -230,6 +235,7 @@ async function JadenStage2(){
 		await delay(0.025);
 		//If our error is less than 1.0 cm, keep track of how long that has been the case.
 
+
 	}
 
 }
@@ -239,9 +245,9 @@ async function JadenStage3(){
 //This is a hacky way to quickly do a point turn to 90 degrees.
 
 //This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
-await roll(90,-50,0.1)
+await roll(270,-50,0.1)
 //...and then this moves it back.
-await roll(90,50,0.1)
+await roll(270,50,0.1)
 }
 
 async function JadenStage4(){
@@ -257,6 +263,7 @@ async function JadenStage4(){
 	var oldError = 0;
 	var successTimer = 0.0;
 	var maxSpeed = 100;
+	var directionSign = -1; //-1 for moving left or down, 1 for moving right or up
 
 	var stageComplete = false;
 
@@ -265,10 +272,10 @@ async function JadenStage4(){
 
 	while(stageComplete != true){
 		//get the current location of the robot.
-		var location = getLocation().y;
+		var location = getLocation().x;
 
 		//Use a PID algorithm to set the position of the robot
-		var error = setpoint - location;
+		var error = directionSign*(setpoint - location);
 		var changeError = error - oldError;
 		accumulatedError = error + accumulatedError
 
@@ -287,7 +294,7 @@ async function JadenStage4(){
 		}
 
 		//This function rolls the motors at a heading of 0, with a motor speed of output, for 0.2 seconds.
-		await roll(0,output,0.2);
+		await roll(270,output,0.2);
 
 		if(error < 2.0){
 			successTimer += 0.1;
@@ -301,6 +308,7 @@ async function JadenStage4(){
 
 		await delay(0.025);
 		//If our error is less than 1.0 cm, keep track of how long that has been the case.
+
 
 	}
 
