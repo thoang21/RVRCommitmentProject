@@ -119,8 +119,10 @@ await roll(90,50,0.1)
 
 async function stageTwoPart4(){
 
+	//Travel for eighty centimeters at a heading of 90 degrees
 
-	let setpoint = 180;
+	let setpoint = 300; //drive for 5 blocks
+
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
