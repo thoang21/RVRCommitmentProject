@@ -22,16 +22,35 @@ I will be syncing with this repository on my computer and pasting the code into 
 */
 
 async function startProgram() {
-	await stageOne()
-	await stageTwo()
-	await stageThree()
+	//Jake' Movement Here (Stage 1):
+	
+	//Jaden's Movement Here (Stage 2):
+	await stageTwoPart1()
+	await stageTwoPart2()
+	await stageTwoPart3()
+	await stageTwoPart4()
+	
+	//Other People's Movement Here:
 	exitProgram()
 }
 
-async function stageOne(){
+
+async function stageTwoPart1(){
 
 
-	let setpoint = 240; //changed to four tiles
+//This is a hacky way to quickly do a point turn to 90 degrees.
+
+//This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
+await roll(90,50,0.1)
+//...and then this moves it back.
+await roll(90,-50,0.1)
+}
+
+async function stageTwoPart2(){
+
+
+	let setpoint = 120;
+
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
@@ -88,22 +107,20 @@ async function stageOne(){
 
 }
 
-async function stageTwo(){
+async function stageTwoPart3(){
 
 //This is a hacky way to quickly do a point turn to 90 degrees.
 
 //This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
-await roll(90,50,0.1)
-//...and then this moves it back.
 await roll(90,-50,0.1)
+//...and then this moves it back.
+await roll(90,50,0.1)
 }
 
+async function stageTwoPart4(){
 
-async function stageThree(){
 
-	//Travel for eighty centimeters at a heading of 90 degrees
-
-	let setpoint = 120;
+	let setpoint = 180;
 	let k = 2.0;
 	let kD = 0.5;
 	let kI = 0.001;
@@ -112,13 +129,14 @@ async function stageThree(){
 	var successTimer = 0.0;
 	var maxSpeed = 100;
 
-	stageComplete = false;
+	var stageComplete = false;
 
-	await setMainLed({r:0,g:0,b:255})
+	//Visual feedback to know which stage we are on
+	await setMainLed({r:255,g:0,b:0})
 
 	while(stageComplete != true){
-		//get the current location of the robot. Note that this uses the x-coordinate this time, not y.
-		var location = getLocation().x;
+		//get the current location of the robot.
+		var location = getLocation().y;
 
 		//Use a PID algorithm to set the position of the robot
 		var error = setpoint - location;
@@ -129,28 +147,33 @@ async function stageThree(){
 		var output = k*error - kD*changeError + kI*accumulatedError;
 		oldError = error
 
-		if(output > maxSpeed){
+		if(output >maxSpeed){
 
 			output = maxSpeed;
 
 		}
-		if(output < -maxSpeed){
+		if(output < -255){
 
 			output = -maxSpeed;
 		}
-		//We want all of this to be happening at a heading of 90 degrees
 
-		await roll(90,output,0.2);
+		//This function rolls the motors at a heading of 0, with a motor speed of output, for 0.2 seconds.
+		await roll(0,output,0.2);
 
-		await delay(0.025);
-		//If our error is less than 2.0 cm, keep track of how long that has been the case.
 		if(error < 2.0){
-			successTimer += 0.025;
+			successTimer += 0.1;
+
 		}
+
 		//If the error has been less than 2.0 cm for more than half a second, finish the stage.
 		if(successTimer > 0.5){
 			stageComplete = true
 		}
+
+		await delay(0.025);
+		//If our error is less than 1.0 cm, keep track of how long that has been the case.
+
 	}
 
 }
+
