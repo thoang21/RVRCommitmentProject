@@ -34,7 +34,9 @@ async function startProgram() {
 	//Son's movemen
 	
 	//Tung's Movement Here (Stage 4):
-	
+	await TungStage1()
+	await TungStage2()
+	await TungStage3()
 	//Other People's Movement Here:
 	
 	exitProgram()
