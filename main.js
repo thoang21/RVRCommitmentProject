@@ -323,10 +323,10 @@ async function JadenStage4(){
 }
 
 async function SonStage1(){
-	//This function rolls the motors at a heading of 270, with a motor speed of 50, for 0.1 seconds.
-	await roll(270,50,0.1)
+	//This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
+	await roll(180,50,0.1)
 	//...and then this moves it back.
-	await roll(270,-50,0.1)
+	await roll(180,-50,0.1)
 }
 
 async function SonStage2(){
@@ -369,7 +369,7 @@ async function SonStage2(){
 		}
 
 		//This function rolls the motors at a heading of 0, with a motor speed of output, for 0.2 seconds.
-		await roll(0,output,0.2);
+		await roll(180,output,0.2);
 
 		if(error < 2.0){
 			successTimer += 0.025; //Change to 0.025 to match the delay - Son
@@ -390,9 +390,9 @@ async function SonStage2(){
 
 async function SonStage3(){
 	//This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
-	await roll(270,50,0.1)
+	await roll(90,50,0.1)
 	//...and then this moves it back.
-	await roll(270,-50,0.1)
+	await roll(90,-50,0.1)
 }
 
 async function TungStage1(){
