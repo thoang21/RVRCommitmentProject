@@ -399,7 +399,7 @@ async function TungStage1(){
 
 	//Travel for (???) centimeters at a heading of 90 degrees
 
-	let setpoint = 250; //drive for 1 tiles to the left
+	let setpoint = 60; //drive for 1 tiles to the left
 
 	let k = 2.0;
 	let kD = 0.5;
@@ -464,16 +464,16 @@ async function TungStage2(){
 //This is a hacky way to quickly do a point turn to 90 degrees.
 
 //This function rolls the motors at a heading of 90, with a motor speed of 50, for 0.1 seconds.
-await roll(90,-50,0.1)
+await roll(180,-50,0.1)
 //...and then this moves it back.
-await roll(270,50,0.1)
+await roll(180,50,0.1)
 }
 
 async function TungStage3(){
 
 	//Travel for (???) centimeters at a heading of 90 degrees
 
-	let setpoint = 0; //drive for 1 tiles downward
+	let setpoint = 60; //drive for 1 tiles downward
 
 	let k = 2.0;
 	let kD = 0.5;
