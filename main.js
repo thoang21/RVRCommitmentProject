@@ -22,7 +22,7 @@ I will be syncing with this repository on my computer and pasting the code into 
 */
 
 async function startProgram() {
-	//Jake' Movement Here (Stage 1):
+	//Tung's Movement Here:
 	await TungStage1()
 	await TungStage2()
 	await TungStage3()
@@ -70,7 +70,7 @@ async function TungStage1(){
 		}
 
 		//This function rolls the motors at a heading of 0, with a motor speed of output, for 0.2 seconds.
-		await roll(0,output,0.2);
+		await roll(90,output,0.2);
 
 		if(error < 2.0){
 			successTimer += 0.1;
@@ -89,7 +89,7 @@ async function TungStage1(){
 
 }
 
-async function EMWStage2(){
+async function TungStage2(){
 
 //Turn to a heading of 180 degrees.
 
@@ -100,10 +100,9 @@ await roll(180,-50,0.1)
 }
 
 
-async function EMWStage3(){
+async function TungStage3(){
 
-	//Travel to (240,-60) at a heading of 90 degrees
-	//Make sure to change the heading at line 150!
+	//Travel to (240,-60) at a heading of 180 degrees
 
 	let setpoint = -60;
 	let k = 2.0;
@@ -142,7 +141,7 @@ async function EMWStage3(){
 		}
 		//We want all of this to be happening at a heading of 90 degrees
 
-		await roll(90,output,0.2);
+		await roll(180,output,0.2);
 
 		if(error < 2.0){
 			successTimer += 0.1;
